@@ -1,7 +1,7 @@
 import React from 'react'
 
-import {useDispatch, useSelector} from "react-redux";
-import {changeActivePost, removeActivePost} from "../../store/actionsCreator";
+import {useDispatch, useSelector} from "react-redux"
+import {changeActivePost} from "../../store/Posts/actionsCreator"
 
 export default ({post}) => {
 
@@ -18,10 +18,10 @@ export default ({post}) => {
         <>
             <div
                 style={{cursor: 'pointer'}}
-                className={`list-group-item ${post.id===activePost.id ? 'list-group-item active': ''}`}
+                className={`list-group-item ${post.id === activePost.id ? 'list-group-item active' : ''}`}
                 onClick={clickPostHandler}
             >
-               <span>Title: {post.title}</span><br/>
+                <span>Title: {post.title}</span><br/>
                 <span>Description: {post.body}</span>
 
             </div>

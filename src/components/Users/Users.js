@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {getAllUsers} from "../../store/actionsCreator";
+import {getAllUsers} from "../../store/Users/actionsCreator";
 import UserItem from "./UserItem";
 
 //   {
@@ -18,28 +18,26 @@ import UserItem from "./UserItem";
 //         "lng": "81.1496"
 //       }
 
-// 1. Fetch user name, username, email
+// 1. Fetch user name, username, email [36:50]
 
 const Users = () => {
 
     const dispatch = useDispatch()
-    const users = useSelector(state => state.users)
-
-    console.log("what exact data we fetch?.......", users)
+    const users = useSelector(state => state.users.users)
 
     useEffect(() => {
-        dispatch( getAllUsers() )
+        dispatch(getAllUsers())
     }, [])
 
     const renderUsers = () => {
         return !users.length
             ? (<h2>No Users</h2>)
-            : users.map(user => <UserItem key={user.id} user={user} />)
+            : users.map(user => <UserItem key={user.id} user={user}/>)
     }
 
     return (
         <div className="list-group">
-            { renderUsers() }
+            {renderUsers()}
         </div>
     )
 }

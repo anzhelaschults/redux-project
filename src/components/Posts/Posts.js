@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import PostItem from "./PostItem";
-import {getPostsByUserId} from "../../store/actionsCreator";
-import Spinner from "../UI/Spinner";
+import {getPostsByUserId} from "../../store/Posts/actionsCreator";
+import Spinner from "../UI/Spinner"
 
 //   {
 //     "userId": 1,
@@ -15,8 +15,8 @@ const Posts = () => {
 
     const dispatch = useDispatch()
 
-    const activeUser = useSelector(state => state.activeUser)
-    const posts = useSelector(state => state.posts)
+    const activeUser = useSelector(state => state.users.activeUser)
+    const posts = useSelector(state => state.posts.posts)
     const isLoading = useSelector(state => state.postsIsLoading)
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const Posts = () => {
     const renderPosts = () => {
 
         return isLoading
-            ? <Spinner />
+            ? <Spinner/>
             : (
                 <div className="list-group">
                     {posts.map(post => <PostItem key={post.id} post={post}/>)}
